@@ -1,5 +1,17 @@
 .App {
   text-align: center;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+  z-index: 0;
+  text-shadow: 0px 8px 3px rgba(0, 0, 0, 0.6);
+}
+.APP div {
+  text-shadow: 0px 8px 3px rgba(0, 0, 0, 0.6);
 }
 
 .App-logo {
@@ -14,14 +26,15 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: rgba(50, 95, 29, 0.4);
+  height: 100%;
+  width: 100vw;
+  overflow: scroll;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* font-size: calc(10px + 2vmin); */
+  z-index: 100;
 }
 
 .App-link {
@@ -34,5 +47,74 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.box {
+  position: absolute;
+  cursor: move;
+  color: black;
+  max-width: 215px;
+  border-radius: 8px;
+  outline: transparent;
+  padding: 1em;
+  margin: auto;
+  user-select: none;
+  animation: blurHighlight 0.75s ease-out 1;
+  box-shadow: rgba(246, 248, 248, 0.3) 3px 3px 13px 4px;
+}
+
+.kota {
+  position: fixed;
+  height: 60px;
+  width: 60px;
+  top: calc(50% - 60px / 2);
+  left: calc(50% - 60px / 2);
+  border-radius: 50%;
+  background: url(img/kota.jpg) center;
+  background: url(img/muchan_kasige1.jpg) center;
+  border: 3px dotted rgb(255, 251, 0);
+}
+
+button {
+  font-size: 0.3rem;
+  border-radius: 5px;
+  color: rgb(124, 121, 121);
+  border: transparent;
+  cursor: pointer;
+  background-color: rgba(13, 14, 13, 0.6);
+}
+.button {
+  position: fixed;
+  top: 1px;
+  right: 1px;
+}
+
+.input__wrapper {
+  position: absolute;
+  width: 40%;
+  bottom: 3%;
+  right: 3px;
+  display: flex;
+  align-items: baseline;
+}
+
+.input__wrapper > input {
+  width: 80%;
+  height: 20px;
+  padding: 10px;
+  margin-right: 3px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+@keyframes blurHighlight {
+  from {
+    box-shadow: 0px 0px 10px #f5eddc, 0px 0px 10px #f5eddc, 0px 0px 25px #f5eddc,
+      0px 0px 25px #f5eddc, 0px 0px 25px #f5eddc, 0px 0px 25px #f5eddc,
+      0px 0px 25px #f5eddc, 0px 0px 25px #f5eddc, 0px 0px 50px #f5eddc,
+      0px 0px 50px #f5eddc, 0px 0px 50px #e6f704, 0px 0px 350px #e6f704,
+      0px 10px 100px #e6f704, 0px 10px 100px #f5eddc, 0px 10px 100px #f5eddc,
+      0px 10px 100px #f5eddc, 0px -10px 100px #f5eddc, 0px -10px 100px #f5eddc;
   }
 }
