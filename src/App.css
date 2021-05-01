@@ -61,7 +61,7 @@
   margin: auto;
   user-select: none;
   animation: blurHighlight 0.75s ease-out 1;
-  box-shadow: rgba(246, 248, 248, 0.3) 3px 3px 13px 4px;
+  box-shadow: rgba(40, 41, 41, 0.3) 3px 3px 13px 4px;
 }
 
 .kota {
