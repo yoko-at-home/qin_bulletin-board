@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Draggable from 'react-draggable';
-import { v4 as uuidv4 } from 'uuid';
-import randomColor from 'randomcolor';
+import React, { useState, useEffect, useRef } from "react";
+import "./App.css";
+import Draggable from "react-draggable";
+import randomColor from "randomcolor";
 
-import SignIn from './components/SignIn';
-import config from './config.json';
-import Background from './components/Background';
+import SignIn from "./components/SignIn";
+import config from "./config.json";
+import Background from "./components/Background";
+import { db } from "./firebase";
 
 function App() {
-  const [name, setName] = useState('');
-  const [item, setItem] = useState('');
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem('items')) || []
-  );
+  const [name, setName] = useState("");
+  const [item, setItem] = useState("");
+  const [items, setItems] = useState([]);
 
   const keyPress = (event) => {
     var code = event.keyCode || event.which;
@@ -23,98 +21,111 @@ function App() {
   };
 
   const newitem = () => {
-    if (item.trim() !== '') {
-      //if input is not blank, create a new item object
-      const newitem = {
-        id: uuidv4(),
+    if (item.trim() !== "") {
+      db.collection("theme").add({
         item: item,
-        color: randomColor({ luminosity: 'light' }),
-        defaultPos: { x: 50, y: -50 },
-      };
-      //add this new item object to the items array
-      setItems((items) => [...items, newitem]);
+        color: randomColor({ luminosity: "light" }),
+        pojx: 100,
+        pojy: 0,
+      });
       //reset item value to empty string
-      setItem('');
+      setItem("");
     } else {
-      alert('お題を入力してください');
-      setItem('');
+      alert("お題を入力してください");
+      setItem("");
     }
   };
 
   useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(items));
-  }, [items]);
+    db.collection("theme").onSnapshot((snapshot) =>
+      setItems(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          item: doc.data().item,
+          color: doc.data().color,
+          defaultPos: { x: doc.data().pojx, y: doc.data().pojy },
+        }))
+      )
+    );
+  }, []);
 
   const updatePos = (data, index) => {
     let newArr = [...items];
     newArr[index].defaultPos = { x: data.x, y: data.y };
     setItems(newArr);
+
+    const themeRef = db.collection("theme").doc(newArr[index].id);
+    themeRef.update({
+      pojx: newArr[index].defaultPos.x,
+      pojy: newArr[index].defaultPos.y,
+    });
   };
 
   const deleteNote = (id) => {
     setItems(items.filter((item) => item.id !== id));
+    db.collection("theme").doc(id).delete();
   };
-const nodeRef = React.useRef(null);
-return config.signInEnabled && name === '' ? (
-  <>
-    <Background />
-    <SignIn setName={setName} />
-  </>
-) : (
-  <>
-    <Background />
-    <div className='kota'></div>
-      <div className='input__wrapper'>
+  const nodeRef = useRef(null);
+  return config.signInEnabled && name === "" ? (
+    <>
+      <Background />
+      <SignIn setName={setName} />
+    </>
+  ) : (
+    <>
+      <Background />
+      <div className="kota"></div>
+      <div className="input__wrapper">
         <input
           value={item}
           onChange={(e) => setItem(e.target.value)}
-          placeholder='お題を入力'
+          placeholder="お題を入力"
           onKeyPress={(e) => keyPress(e)}
         />
         <button
           style={{
-            fontSize: '1rem',
-            color: 'yellow',
-            padding: '5px',
-            height: 'fit-content',
-            border: '3px dotted rgb(255, 251, 0)',
+            fontSize: "1rem",
+            color: "yellow",
+            padding: "5px",
+            height: "fit-content",
+            border: "3px dotted rgb(255, 251, 0)",
           }}
           onClick={newitem}
         >
           ENTER
         </button>
       </div>
-    <div className='App-header'>
-      {items.map((item, index) => {
-        return (
-          <Draggable
-            nodeRef={nodeRef}
-            key={item.id}
-            defaultPosition={item.defaultPos}
-            onStop={(e, data) => {
-              updatePos(data, index);
-            }}
-          >
-            <div
-              ref={nodeRef}
-              style={{ backgroundColor: item.color }}
-              className='box'
+      <div className="App-header">
+        {items.map((item, index) => {
+          return (
+            <Draggable
+              nodeRef={nodeRef}
+              key={item.id}
+              defaultPosition={item.defaultPos}
+              onStop={(e, data) => {
+                updatePos(data, index);
+              }}
             >
-              {`${item.item}`}
-              <button
-                className='button'
-                id='delete'
-                onClick={(e) => deleteNote(item.id)}
+              <div
+                ref={nodeRef}
+                style={{ backgroundColor: item.color }}
+                className="box"
               >
-                X
-              </button>
-            </div>
-          </Draggable>
-        );
-      })}
-    </div>
-  </>
-);
+                {`${item.item}`}
+                <button
+                  className="button"
+                  id="delete"
+                  onClick={(e) => deleteNote(item.id)}
+                >
+                  X
+                </button>
+              </div>
+            </Draggable>
+          );
+        })}
+      </div>
+    </>
+  );
 }
 
 export default App;
