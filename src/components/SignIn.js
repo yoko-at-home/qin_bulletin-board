@@ -106,19 +106,19 @@ export default function SignIn({ setName }) {
             お題を投稿する
           </Button>
         </form>
-        <Typography component='h4' variant=' h5'>
+        <Typography component='h4' variant='h5'>
           <br />
           「しまぶー」と名乗りしもの
           <br />
           国王の権限を有す
           <br />
         </Typography>
-        <Typography component='h1' variant=' h1'>
+        <Typography component='h3' variant='h3'>
           {' '}
           👑
         </Typography>
         <br />
-        <Typography component='p' variant=' p'>
+        <Typography component='h6' variant='h6'>
           汝、偽りの名を名乗るべからず
         </Typography>
         <Box mt={10}>
