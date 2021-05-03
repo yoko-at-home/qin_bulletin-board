@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Draggable from 'react-draggable';
 import { v4 as uuidv4 } from 'uuid';
@@ -54,64 +54,67 @@ function App() {
   const deleteNote = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
-const inputel = useRef(null);
-  return (
-    (config.signInEnabled && name === '') ?
-    <>
-        <Background />
-        <SignIn setName={setName} />
-      </>
-      :
-      <>
-       <Background />
-      <div className='kota'></div>
-      <div className='input__wrapper'>
-        <input
-          value={item}
-          inputel={inputel}
-          onChange={(e) => setItem(e.target.value)}
-          placeholder='お題を入力'
-          onKeyPress={(e) => keyPress(e)}
-        />
-        <button
-          style={{
-            fontSize: '1rem',
-            color: 'yellow',
-            padding: '5px',
-            height: 'fit-content',
-            border: '3px dotted rgb(255, 251, 0)',
-          }}
-          onClick={newitem}
-        >
-          ENTER
-        </button>
-      </div>
-      <div className='App-header'>
-        {items.map((item, index) => {
-          return (
-            <Draggable
-              key={item.id}
-              defaultPosition={item.defaultPos}
-              onStop={(e, data) => {
-                updatePos(data, index);
-              }}
+const nodeRef = React.useRef(null);
+return config.signInEnabled && name === '' ? (
+  <>
+    <Background />
+    <SignIn setName={setName} />
+  </>
+) : (
+  <>
+    <Background />
+    <div className='kota'></div>
+    <div className='input__wrapper'>
+      <input
+        value={item}
+        onChange={(e) => setItem(e.target.value)}
+        placeholder='お題を入力'
+        onKeyPress={(e) => keyPress(e)}
+      />
+      <button
+        style={{
+          fontSize: '1rem',
+          color: 'yellow',
+          padding: '5px',
+          height: 'fit-content',
+          border: '3px dotted rgb(255, 251, 0)',
+        }}
+        onClick={newitem}
+      >
+        ENTER
+      </button>
+    </div>
+    <div className='App-header'>
+      {items.map((item, index) => {
+        return (
+          <Draggable
+            nodeRef={nodeRef}
+            key={item.id}
+            defaultPosition={item.defaultPos}
+            onStop={(e, data) => {
+              updatePos(data, index);
+            }}
+          >
+            <div
+              ref={nodeRef}
+              style={{ backgroundColor: item.color }}
+              className='box'
             >
-              <div style={{ backgroundColor: item.color }} className='box'>
-                {`${item.item}`}
-                <button
-                  className='button'
-                  id='delete'
-                  onClick={(e) => deleteNote(item.id)}
-                >
-                  X
-                </button>
-              </div>
-            </Draggable>
-          );
-        })}
-      </div>
-    </>
-  );
+              {`${item.item}`}
+              <button
+                className='button'
+                id='delete'
+                onClick={(e) => deleteNote(item.id)}
+              >
+                X
+              </button>
+            </div>
+          </Draggable>
+        );
+      })}
+    </div>
+  </>
+);
 }
 
 export default App;
