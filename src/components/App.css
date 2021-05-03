@@ -64,17 +64,6 @@
   box-shadow: rgba(40, 41, 41, 0.3) 3px 3px 13px 4px;
 }
 
-.kota {
-  position: fixed;
-  height: 60px;
-  width: 60px;
-  top: calc(50% - 60px / 2);
-  left: calc(50% - 60px / 2);
-  border-radius: 50%;
-  background: url(img/kota.jpg) center;
-  background: url(img/muchan_kasige1.jpg) center;
-  border: 3px dotted rgb(255, 251, 0);
-}
 
 button {
   font-size: 0.3rem;
