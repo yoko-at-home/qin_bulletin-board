@@ -25,10 +25,9 @@ function App() {
       db.collection("theme").add({
         item: item,
         color: randomColor({ luminosity: "light" }),
-        defaultPos: { x: 50, y: -50 },
+        pojx: 100,
+        pojy: 0,
       });
-      //add this new item object to the items array
-      setItems((items) => [...items, newitem]);
       //reset item value to empty string
       setItem("");
     } else {
