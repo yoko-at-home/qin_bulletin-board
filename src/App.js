@@ -29,7 +29,7 @@ function App() {
         id: uuidv4(),
         item: item,
         color: randomColor({ luminosity: 'light' }),
-        defaultPos: { x: 100, y: 0 },
+        defaultPos: { x: 50, y: -50 },
       };
       //add this new item object to the items array
       setItems((items) => [...items, newitem]);
@@ -64,26 +64,26 @@ return config.signInEnabled && name === '' ? (
   <>
     <Background />
     <div className='kota'></div>
-    <div className='input__wrapper'>
-      <input
-        value={item}
-        onChange={(e) => setItem(e.target.value)}
-        placeholder='お題を入力'
-        onKeyPress={(e) => keyPress(e)}
-      />
-      <button
-        style={{
-          fontSize: '1rem',
-          color: 'yellow',
-          padding: '5px',
-          height: 'fit-content',
-          border: '3px dotted rgb(255, 251, 0)',
-        }}
-        onClick={newitem}
-      >
-        ENTER
-      </button>
-    </div>
+      <div className='input__wrapper'>
+        <input
+          value={item}
+          onChange={(e) => setItem(e.target.value)}
+          placeholder='お題を入力'
+          onKeyPress={(e) => keyPress(e)}
+        />
+        <button
+          style={{
+            fontSize: '1rem',
+            color: 'yellow',
+            padding: '5px',
+            height: 'fit-content',
+            border: '3px dotted rgb(255, 251, 0)',
+          }}
+          onClick={newitem}
+        >
+          ENTER
+        </button>
+      </div>
     <div className='App-header'>
       {items.map((item, index) => {
         return (
