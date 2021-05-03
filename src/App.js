@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Draggable from 'react-draggable';
 import { v4 as uuidv4 } from 'uuid';
-const randomColor = require('randomcolor');
+import randomColor from 'randomcolor';
 
-
+import SignIn from './components/SignIn';
+import config from './config.json';
+import Background from './components/Background';
 
 function App() {
+  const [name, setName] = useState('');
   const [item, setItem] = useState('');
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem('items')) || []
@@ -51,19 +54,21 @@ function App() {
   const deleteNote = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
-
+const inputel = useRef(null);
   return (
+    (config.signInEnabled && name === '') ?
     <>
-      <div className='App'>
-        <div style={{ backgroundColor: '#f88', height: '50vh' }}>お題</div>
-        <div style={{ backgroundColor: '#8f8' }}>話中のお題</div>
-        <div style={{ backgroundColor: '#88f' }}>話し終えたお題</div>
-        <div style={{ backgroundColor: 'green' }}>未分類</div>
-      </div>
+        <Background />
+        <SignIn setName={setName} />
+      </>
+      :
+      <>
+       <Background />
       <div className='kota'></div>
       <div className='input__wrapper'>
         <input
           value={item}
+          inputel={inputel}
           onChange={(e) => setItem(e.target.value)}
           placeholder='お題を入力'
           onKeyPress={(e) => keyPress(e)}
@@ -71,7 +76,7 @@ function App() {
         <button
           style={{
             fontSize: '1rem',
-            color:'yellow',
+            color: 'yellow',
             padding: '5px',
             height: 'fit-content',
             border: '3px dotted rgb(255, 251, 0)',
