@@ -3,24 +3,33 @@ import "./App.css";
 
 import SignIn from "./SignIn";
 import config from "../config.json";
-import Background from "./Background";
 import InputField from "./InputField";
 import Board from "./Board";
 import { context } from "../constext/ContextProvider";
+import BackgroundForSignin from "./SignIn/BackgroundForSignin";
+import BackgroundForUsers from "./BackgroundForUsers";
 
 function App() {
-  const { name } = useContext(context);
+  const { name, admin } = useContext(context);
 
-  return config.signInEnabled && name === "" ? (
+  if (config.signInEnabled && name === "") {
+    return (
+      <>
+        <BackgroundForSignin  />
+        <SignIn  />
+      </>
+    );
+  }
+  return admin ? (
     <>
-      <Background />
-      <SignIn />
+      <BackgroundForSignin />
+      <InputField />
+      <Board />
     </>
   ) : (
     <>
-      <Background />
+      <BackgroundForUsers />
       <InputField />
-      <Board />
     </>
   );
 }

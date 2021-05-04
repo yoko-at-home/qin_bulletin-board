@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from "react";
 import { db } from '../firebase';
 import randomColor from 'randomcolor';
+import { context } from "../constext/ContextProvider";
 
 const InputField = () => {
   const [item, setItem] = useState('');
+  const { name } = useContext(context);
 
   const newitem = () => {
     if (item.trim() !== '') {
-      db.collection('theme').add({
+      db.collection("theme").add({
         item: item,
-        color: randomColor({ luminosity: 'light' }),
+        color: randomColor({ luminosity: "light" }),
         pojx: 50,
         pojy: -50,
+        user: name,
       });
       //reset item value to empty string
       setItem('');
