@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Draggable from 'react-draggable';
 import { db } from '../firebase';
+// const { ReactDraggable: Draggable, React, ReactDOM } = window;
+
+const isAdmin = true//管理者であればみたいなロジック
 
 const Board = () => {
   const [items, setItems] = useState([]);
@@ -39,7 +42,33 @@ const Board = () => {
   return (
     <div className='App-header'>
       {items.map((item, index) => {
-        return (
+        return {
+          isAdmin,
+        } ? (
+          <Draggable
+            nodeRef={nodeRef}
+            key={item.id}
+            defaultPosition={item.defaultPos}
+            onStop={(e, data) => {
+              updatePos(data, index);
+            }}
+          >
+            <div
+              ref={nodeRef}
+              style={{ backgroundColor: item.color }}
+              className='box'
+            >
+              {`${item.item}`}
+              <button
+                className='button'
+                id='delete'
+                onClick={(e) => deleteNote(item.id)}
+              >
+                X
+              </button>
+            </div>
+          </Draggable>
+        ) : (
           <Draggable
             nodeRef={nodeRef}
             key={item.id}
