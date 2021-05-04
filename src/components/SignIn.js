@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { context } from "../constext/ContextProvider";
 
 function Copyright() {
   return (
@@ -50,16 +51,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ setName }) {
+export default function SignIn() {
   const classes = useStyles();
   const [disabled, setDisabled] = useState(true);
   const [string, setString] = useState("");
   const [isComposed, setIsComposed] = useState(false);
+  const { setName, setAdmin } = useContext(context);
+  const [password, setPassword] = useState("");
+
+  const dispPassword = string === "しまぶー" || false;
 
   useEffect(() => {
-    const disabled = string === "";
+    let disabled = true;
+    if (!isComposed) {
+      if (dispPassword) {
+        disabled =
+          string === "" || password !== process.env.REACT_APP_ADMIN_PASSWORD;
+      } else {
+        disabled = string === "";
+      }
+    }
     setDisabled(disabled);
-  }, [string]);
+  }, [dispPassword, isComposed, string, password]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setName(string);
+    if (dispPassword && password === process.env.REACT_APP_ADMIN_PASSWORD) {
+      setAdmin(true);
+    } else {
+      setAdmin(false);
+    }
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -70,7 +93,7 @@ export default function SignIn({ setName }) {
           <br />
           ニックネームを入力してお題を投稿せよ
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -81,19 +104,25 @@ export default function SignIn({ setName }) {
             name="name"
             autoFocus
             onChange={(e) => setString(e.target.value)}
-            onKeyDown={(e) => {
-              if (isComposed) return;
-
-              if (e.key === "Enter") {
-                setName(e.target.value);
-                e.preventDefault();
-              }
-            }}
             onCompositionStart={() => setIsComposed(true)}
             onCompositionEnd={() => setIsComposed(false)}
           />
+          {dispPassword ? (
+            <TextField
+              variant="outlined"
+              margin="normal"
+              type="password"
+              required
+              fullWidth
+              id="password"
+              label="パスワード"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          ) : null}
           <Button
-            type="button"
+            type="submit"
             fullWidth
             variant="contained"
             color="primary"
