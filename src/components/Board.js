@@ -4,7 +4,7 @@ import { db } from "../firebase";
 import { context } from "../constext/ContextProvider";
 
 const Board = () => {
-  const { name, admin } = useContext(context);
+  const { admin } = useContext(context);
   const [items, setItems] = useState([]);
   const nodeRef = React.useRef(null);
 
