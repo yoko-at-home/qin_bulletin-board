@@ -7,7 +7,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { context } from "../constext/ContextProvider";
+import { context } from "../../constext/ContextProvider";
 
 function Copyright() {
   return (
@@ -128,9 +128,6 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
             disabled={disabled}
-            onClick={() => {
-              setName(string);
-            }}
           >
             お題を投稿する
           </Button>
@@ -146,10 +143,7 @@ export default function SignIn() {
           {" "}
           👑
         </Typography>
-        <br />
-        <Typography component="h6" variant="h6">
-          汝、偽りの名を名乗るべからず
-        </Typography>
+
         <Box mt={10}>
           <Copyright />
         </Box>

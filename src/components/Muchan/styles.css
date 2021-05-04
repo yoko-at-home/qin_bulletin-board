@@ -1,9 +1,9 @@
 .kota {
-  position: fixed;
+  display: inline-block;
   height: 60px;
   width: 60px;
-  top: calc(50% - 60px / 2);
-  left: calc(50% - 60px / 2);
+  /* top: calc(50% - 60px / 2);
+  left: calc(50% - 60px / 2); */
   border-radius: 50%;
   background: url(../../img/muchan_kasige1.jpg) center;
   border: 3px dotted rgb(255, 251, 0);

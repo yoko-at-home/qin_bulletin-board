@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-size: calc(10px + 2vmin); */
+  font-size: calc(10px + 2vmin);
   z-index: 100;
 }
 
@@ -62,6 +62,7 @@
   user-select: none;
   animation: blurHighlight 0.75s ease-out 1;
   box-shadow: rgba(40, 41, 41, 0.3) 3px 3px 13px 4px;
+  font-size: small;
 }
 
 
