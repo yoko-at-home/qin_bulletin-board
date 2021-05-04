@@ -143,13 +143,9 @@ export default function SignIn() {
           <br />
         </Typography>
         <Typography component="h3" variant="h3">
-          {" "}
           👑
         </Typography>
-        <br />
-        <Typography component="h6" variant="h6">
-          汝、偽りの名を名乗るべからず
-        </Typography>
+
         <Box mt={10}>
           <Copyright />
         </Box>
