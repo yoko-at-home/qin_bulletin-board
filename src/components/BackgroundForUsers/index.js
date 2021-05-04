@@ -1,8 +1,9 @@
 import React from "react";
 import "./styles.css";
 import Muchan from "../Muchan";
+import { Mibunrui } from "./Mibunrui";
 
-const Background = () => {
+const BackgroundForUsers = () => {
   return (
     <div>
       <div className="Bg">
@@ -14,10 +15,10 @@ const Background = () => {
           </div>
         </div>
         <div className="owari">話し終えたお題</div>
-        <div className="mibunrui">未分類</div>
+        <Mibunrui />
       </div>
     </div>
   );
 };
 
-export default Background;
+export default BackgroundForUsers;
