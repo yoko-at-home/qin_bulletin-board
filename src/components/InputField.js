@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
-import { db } from '../firebase';
-import randomColor from 'randomcolor';
+import React, { useContext, useState } from "react";
+import { themeRef } from "../firebase";
+import randomColor from "randomcolor";
+import { context } from "../constext/ContextProvider";
 
 const InputField = () => {
-  const [item, setItem] = useState('');
+  const [item, setItem] = useState("");
+  const { name } = useContext(context);
 
   const newitem = () => {
-    if (item.trim() !== '') {
-      db.collection('theme').add({
+    if (item.trim() !== "") {
+      // db.collection('theme').add({
+      //   item: item,
+      //   color: randomColor({ luminosity: 'light' }),
+      //   pojx: 50,
+      //   pojy: -50,
+      // });
+      themeRef.push({
         item: item,
-        color: randomColor({ luminosity: 'light' }),
+        color: randomColor({ luminosity: "light" }),
         pojx: 50,
         pojy: -50,
+        user: name,
       });
+
       //reset item value to empty string
-      setItem('');
+      setItem("");
     } else {
-      alert('お題を入力してください');
-      setItem('');
+      alert("お題を入力してください");
+      setItem("");
     }
   };
 
@@ -29,20 +39,20 @@ const InputField = () => {
   };
 
   return (
-    <div className='input__wrapper'>
+    <div className="input__wrapper">
       <input
         value={item}
         onChange={(e) => setItem(e.target.value)}
-        placeholder='お題を入力'
+        placeholder="お題を入力"
         onKeyPress={(e) => keyPress(e)}
       />
       <button
         style={{
-          fontSize: '1rem',
-          color: 'yellow',
-          padding: '5px',
-          height: 'fit-content',
-          border: '3px dotted rgb(255, 251, 0)',
+          fontSize: "1rem",
+          color: "yellow",
+          padding: "5px",
+          height: "fit-content",
+          border: "3px dotted rgb(255, 251, 0)",
         }}
         onClick={newitem}
       >

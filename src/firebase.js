@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import "firebase/database";
 import "firebase/firestore";
 
 const {
@@ -22,4 +23,5 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-export const db = firebase.firestore();
+const database = firebase.database();
+export const themeRef = database.ref("theme");
