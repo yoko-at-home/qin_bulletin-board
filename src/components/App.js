@@ -6,7 +6,6 @@ import config from "../config.json";
 import Background from "./Background";
 import InputField from "./InputField";
 import Board from "./Board";
-import Icon from "./Icon";
 import { context } from "../constext/ContextProvider";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
   ) : (
     <>
       <Background />
-      <Icon />
       <InputField />
       <Board />
     </>
