@@ -5,13 +5,12 @@ import SignIn from './SignIn';
 import config from '../config.json';
 import Background from './Background';
 import InputField from './InputField';
-import Board from './Board';
-import Icon from './Icon';
+import Board from "./Board";
 
 function App() {
   const [name, setName] = useState('');
 
-  return config.signInEnabled && name === '' ? (
+  return config.signInEnabled && name === "" ? (
     <>
       <Background />
       <SignIn setName={setName} />
@@ -19,7 +18,6 @@ function App() {
   ) : (
     <>
       <Background />
-      <Icon />
       <InputField />
       <Board />
     </>
