@@ -26,6 +26,15 @@ function Copyright() {
     </Typography>
   );
 }
+function Credit() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Credit "}
+      &#x1f3f0;yoko / &#x1f6e1;Takasaki
+    </Typography>
+  );
+}
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,12 +44,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     textAlign: "center",
     height: "80vh",
-    width: "30vw",
+    width: "40vw",
     zIndex: 1000,
     position: "absolute",
     top: 0,
     background: "white",
-    padding: "50px 50px 0 50px",
+    padding: "calc(7%) calc(5%) 0 calc(5%)",
+    marginTop: "calc(8%)",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -144,9 +154,10 @@ export default function SignIn() {
           👑
         </Typography>
 
-        <Box mt={10}>
+        <div style={{ marginTop: "calc(7%)" }}>
           <Copyright />
-        </Box>
+          <Credit />
+        </div>
       </div>
     </Container>
   );
