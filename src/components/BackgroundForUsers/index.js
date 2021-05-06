@@ -7,7 +7,7 @@ const BackgroundForUsers = () => {
   return (
     <div>
       <div className="Bg">
-        <div className="odai">お題</div>
+        <div className="odai">お題候補</div>
         <div className="hanashichu">
           <div className="child">
             <Muchan />
