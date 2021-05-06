@@ -72,9 +72,7 @@ export const Mibunrui = () => {
   }, []);
   return (
     <div className="mibunrui">
-      <div className="mibunrui_subtitle">
-        国王が分類したメモに触れてはなりません
-      </div>
+      <div className="mibunrui_subtitle">分類されたメモに触れるべからず</div>
       <div className="mibunrui_title">未分類</div>
       <div className="mibunrui_subtitle">
         国民はメモをこれより上に置くことはできません

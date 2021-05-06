@@ -3,8 +3,8 @@
   position: fixed;
   height: 60px;
   width: 60px;
- top: calc(67% - 60px / 2);
-  left: calc(6% - 60px / 2);
+ top: calc(69% - 60px / 2);
+  left: calc(6.5% - 60px / 2);
   border-radius: 50%;
   background: url(../../img/muchan_kasige1.jpg) center;
   border: 3px dotted rgb(255, 251, 0);
@@ -13,20 +13,21 @@
 font-size: 0.5rem;
 position: fixed;
 top: 61%;
-left: calc(4%);
+left: calc(2%);
 border-radius: 50%;
 letter-spacing: 1em;
-color:brown
+color:brown;
+line-height: 1.5rem;
 }
 .kota-description2 {
 font-size: 0.5rem;
 position: fixed;
-top: 71%;
+top: 73%;
 left: calc(1%);
 border-radius: 50%;
 letter-spacing: normal;
 color:brown;
-line-height: 1rem;
+line-height: 1.2rem;
 }
 
 
