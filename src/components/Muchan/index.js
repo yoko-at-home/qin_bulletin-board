@@ -3,7 +3,7 @@ import "./styles.css";
 
 const Muchan = () => {
   return (
-    <>
+    <div className="muchan__wrapper">
       <div className="kota-description1">
         王国図鑑
         <br />
@@ -15,7 +15,7 @@ const Muchan = () => {
         <br />
         じゃんけんが強いw
       </div>
-    </>
+    </div>
   );
       };
 
