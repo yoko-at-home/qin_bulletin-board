@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  display: grid;
-  height: 100vh;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  /* display: grid; */
+  /* height: 100vh; */
+  /* grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr; */
   color: white;
   font-size: 2rem;
   font-weight: 800;
