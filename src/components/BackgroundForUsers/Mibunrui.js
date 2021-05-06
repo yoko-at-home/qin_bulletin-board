@@ -72,28 +72,36 @@ export const Mibunrui = () => {
   }, []);
   return (
     <div className="mibunrui">
+      <div className="mibunrui_subtitle">
+        国王がお題分類したメモに触れてはなりません
+      </div>
       <div className="mibunrui_title">未分類</div>
+      <div className="mibunrui_subtitle">
+        国民はメモをこれより上に置くことはできません
+      </div>
       <div className="mibunrui_body">
         {items.map((item, index) => {
           return (
-            <Draggable
-              nodeRef={nodeRef}
-              key={item.id}
-              defaultPosition={item.defaultPos}
-              onStop={(e, data) => {
-                updatePos(data, index);
-              }}
-              bounds="parent"
-              // {...dragHandlers}
-            >
-              <div
-                ref={nodeRef}
-                style={{ backgroundColor: item.color }}
-                className="box"
+            <>
+              <Draggable
+                nodeRef={nodeRef}
+                key={item.id}
+                defaultPosition={item.defaultPos}
+                onStop={(e, data) => {
+                  updatePos(data, index);
+                }}
+                bounds="parent"
+                // {...dragHandlers}
               >
-                {`${item.item}`}
-              </div>
-            </Draggable>
+                <div
+                  ref={nodeRef}
+                  style={{ backgroundColor: item.color }}
+                  className="box"
+                >
+                  {`${item.item}`}
+                </div>
+              </Draggable>
+            </>
           );
         })}
       </div>

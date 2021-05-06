@@ -75,7 +75,7 @@ button {
 .input__wrapper {
   position: absolute;
   width: 40%;
-  bottom: 10%;
+  bottom: 12%;
   right: 3px;
   display: flex;
   align-items: baseline;
