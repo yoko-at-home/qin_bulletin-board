@@ -14,7 +14,9 @@ const BackgroundForSignin = () => {
           </div>
         </div>
         <div className="owari">話し終えたお題</div>
-        <div className="mibunrui">未分類</div>
+        <div className="mibunrui">
+          <div className="mibunrui_title">未分類</div>
+        </div>
       </div>
     </div>
   );

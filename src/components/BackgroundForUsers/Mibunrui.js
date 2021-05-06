@@ -73,7 +73,7 @@ export const Mibunrui = () => {
   return (
     <div className="mibunrui">
       <div className="mibunrui_subtitle">
-        国王がお題分類したメモに触れてはなりません
+        国王が分類したメモに触れてはなりません
       </div>
       <div className="mibunrui_title">未分類</div>
       <div className="mibunrui_subtitle">
