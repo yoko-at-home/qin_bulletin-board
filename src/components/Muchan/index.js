@@ -9,7 +9,7 @@ const Muchan = () => {
         <br />
         🦜むーちゃん🦜
       </div>
-      <div className="kota"></div>
+      <div className="kota muchan-logo"></div>
       <div className="kota-description2">
         Qin国の森に住まう魔法のおうむ
         <br />

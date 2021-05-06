@@ -28,13 +28,13 @@ line-height: 1.2rem;
 
 
 .muchan-logo {
-  position: absolute;
+  /* position: absolute; */
   pointer-events: none;
   z-index: 100;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .muchan-logo {
-    animation: App-logo-spin infinite 10s linear;
+    animation: App-logo-spin infinite 3s linear;
   }
 }
