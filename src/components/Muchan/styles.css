@@ -28,20 +28,7 @@ letter-spacing: normal;
 color:brown;
 line-height: 1rem;
 }
-.muchan {
-  display: inline-block;
-  position: absolute;
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  background: url(../../img/muchan_think1.jpg) no-repeat center/auto;
-  padding: auto;
-  border: 3px dotted rgb(0, 204, 255);
-  font-size: 0.3rem;
-  white-space: nowrap;
-  text-align: center;
-  letter-spacing: -3rem;
-}
+
 
 .muchan-logo {
   position: absolute;
