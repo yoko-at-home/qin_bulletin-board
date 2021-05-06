@@ -13,7 +13,7 @@ const InputField = () => {
         item: item,
         color: randomColor({ luminosity: "light" }),
         pojx: 50,
-        pojy: -50,
+        pojy: -60,
         user: name,
       });
       //reset item value to empty string

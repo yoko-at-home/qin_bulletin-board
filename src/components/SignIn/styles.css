@@ -2,7 +2,7 @@
 .Bg {
   text-align: center;
   display: grid;
-  height: 120vh;
+  height: 110vh;
   grid-template-columns: 1fr 50vw;
   grid-template-rows: 1fr 1fr 1fr;
   color: white;

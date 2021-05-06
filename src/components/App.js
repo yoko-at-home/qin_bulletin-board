@@ -15,16 +15,16 @@ function App() {
   if (config.signInEnabled && name === "") {
     return (
       <>
-        <BackgroundForSignin  />
-        <SignIn  />
+        <BackgroundForSignin />
+        <SignIn />
       </>
     );
   }
   return admin ? (
     <>
       <BackgroundForSignin />
-      <InputField />
       <Board />
+      <InputField />
     </>
   ) : (
     <>
