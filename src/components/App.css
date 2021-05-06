@@ -64,7 +64,7 @@ button {
   color: rgb(124, 121, 121);
   border: transparent;
   cursor: pointer;
-  background-color: rgba(13, 14, 13, 0.6);
+  background-color: #0e6163;
 }
 .button {
   position: fixed;
