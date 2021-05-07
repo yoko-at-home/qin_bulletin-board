@@ -1,12 +1,14 @@
 .App-header {
-  height: 100%;
+  position: absolute ;
+  bottom: 0;
+  height: 20vh;
   width: 100vw;
-  overflow: scroll;
+  /* overflow: scroll; */
   /* display: flex; */
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  z-index: 5;
+  z-index: 1000;
 }
 
 @keyframes App-logo-spin {
