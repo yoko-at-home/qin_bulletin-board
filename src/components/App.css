@@ -78,3 +78,13 @@ button {
       0px 10px 100px #f5eddc, 0px -10px 100px #f5eddc, 0px -10px 100px #f5eddc;
   }
 }
+
+.draggableBox {
+  width: 150px;
+  height: 100px;
+  background-color: rgb(85, 151, 236);
+  cursor: move;
+  touch-action: none;
+  position: absolute;
+  z-index: 1000;
+}
