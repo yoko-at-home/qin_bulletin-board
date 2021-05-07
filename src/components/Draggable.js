@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Drag = (ref) => {
+const Draggable = (ref) => {
   useEffect(() => {
     const target = ref.current;
 
@@ -69,4 +69,4 @@ const Drag = (ref) => {
   }, [ref]);
 };
 
-export default Drag;
+export default Draggable;
