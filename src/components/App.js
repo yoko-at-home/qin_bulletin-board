@@ -9,6 +9,7 @@ import { context } from "../constext/ContextProvider";
 import BackgroundForSignin from "./SignIn/BackgroundForSignin";
 import BackgroundForUsers from "./BackgroundForUsers";
 import Board from "./Board";
+import Sheild from "./BackgroundForUsers/Sheild";
 
 function App() {
   const { name, admin } = useContext(context);
@@ -31,6 +32,7 @@ function App() {
   ) : (
     <>
       <BackgroundForUsers />
+      <Sheild />
       <InputField />
     </>
   );

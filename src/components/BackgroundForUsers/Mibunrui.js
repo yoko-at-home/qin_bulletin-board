@@ -72,10 +72,10 @@ export const Mibunrui = () => {
   }, []);
   return (
     <div className="mibunrui">
-      <div className="mibunrui_subtitle">分類されたメモに触れるべからず</div>
+      <br />
       <div className="mibunrui_title">未分類</div>
       <div className="mibunrui_subtitle">
-        国民はメモをこれより上に置くことはできません
+        国民は、メモをこれより上に置くことも、これより上のメモを触ることもできません
       </div>
       <div className="mibunrui_body">
         {items.map((item, index) => {
