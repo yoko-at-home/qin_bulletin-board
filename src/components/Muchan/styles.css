@@ -1,6 +1,7 @@
 .muchan__wrapper{
   position: fixed;
-  top: calc(69% - 60px / 2);
+  z-index: 2000;
+  top: calc(40% - 60px / 2);
   left: calc(6.5% - 60px / 2);
 }
 .kota {
@@ -11,6 +12,7 @@
   border-radius: 50%;
   background: url(../../img/muchan_kasige1.jpg) center;
   border: 3px dotted rgb(255, 251, 0);
+  z-index: 2000;
 }
 .kota-description1 {
 font-size: 0.5rem;
